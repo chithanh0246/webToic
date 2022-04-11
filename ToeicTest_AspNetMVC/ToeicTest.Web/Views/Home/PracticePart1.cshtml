@@ -1,0 +1,88 @@
+@using ToeicTest.Core.Dto
+@model List<QuestionDto>
+@{
+    ViewBag.Title = "Part 1: Mô t? tranh";
+
+    LessonDto lesson = (LessonDto)ViewData["lesson"];
+    if (lesson == null)
+    {
+        lesson = new LessonDto();
+    }
+}
+<script>
+    $("#menu_part1").addClass("active");
+</script>
+
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <h5 class="page-title">
+                B? câu h?i: <b>@lesson.Name</b>
+            </h5>
+        </div>
+    </div>
+</div>
+
+<form action="/home/resultpart1?lessionId=@lesson.Id" method="post">
+    <div class="row" style="margin-bottom:200px">
+        <div class="col-md-12">
+            <div>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                <div class="card card-table">
+                    <input type="hidden" name="questions[@i].Id" value="@Model[i].Id" />
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12" style="margin-bottom:5px">
+                                <div class="box-audio">
+                                    <span>Câu @(i+1):</span>
+                                    <audio controls="controls">
+                                        <source src="~/Resources/@Model[i].AudioPath" type="audio/mpeg" />
+                                    </audio>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="box-image">
+                                            <img src="~/Resources/@Model[i].ImgPath" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div style="margin-top:20px">
+                                            @foreach (var answer in Model[i].Answers)
+                                                {
+                                            <div style="margin-bottom:10px">
+                                                <label>
+                                                    <input type="radio" name="questions[@i].UserAnswer" value="@answer.Id" />
+                                                    @answer.Content.Split(' ')[0]
+                                                </label>
+                                            </div>
+                                                }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary">N?p bài thi</button>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    $("form").submit(function (event) {
+        if (confirm("Xác nh?n n?p bài thi")) {
+            return;
+        }
+        else
+            event.preventDefault();
+    });
+</script>
