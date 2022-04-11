@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToeicTest.Core", "ToeicTest.Core\ToeicTest.Core.csproj", "{792EC4F1-3F81-4AD4-AC98-E4D5A5FD3C9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToeicTest.Web", "ToeicTest.Web\ToeicTest.Web.csproj", "{1FEA0DC3-0550-4D19-BEE0-EAF558D3AB61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEC0D9EE-D6C8-45AE-8690-38CBB13BBA07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC0D9EE-D6C8-45AE-8690-38CBB13BBA07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC0D9EE-D6C8-45AE-8690-38CBB13BBA07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC0D9EE-D6C8-45AE-8690-38CBB13BBA07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792EC4F1-3F81-4AD4-AC98-E4D5A5FD3C9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792EC4F1-3F81-4AD4-AC98-E4D5A5FD3C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792EC4F1-3F81-4AD4-AC98-E4D5A5FD3C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792EC4F1-3F81-4AD4-AC98-E4D5A5FD3C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FEA0DC3-0550-4D19-BEE0-EAF558D3AB61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FEA0DC3-0550-4D19-BEE0-EAF558D3AB61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FEA0DC3-0550-4D19-BEE0-EAF558D3AB61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FEA0DC3-0550-4D19-BEE0-EAF558D3AB61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {990CE862-BB12-41DF-B44D-15EC54CCA65F}
+	EndGlobalSection
+EndGlobal

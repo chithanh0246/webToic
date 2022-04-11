@@ -1,0 +1,78 @@
+﻿@using ToeicTest.Core.Dto
+@model List<QuestionDto>
+@{
+    ViewBag.Title = "Part 5: Incomplete Sentence";
+
+    LessonDto lesson = (LessonDto)ViewData["lesson"];
+    if (lesson == null)
+    {
+        lesson = new LessonDto();
+    }
+}
+
+<script>
+    $("#menu_part5").addClass("active");
+</script>
+
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <h5 class="page-title">
+                Bộ câu hỏi: <b>@lesson.Name</b>
+            </h5>
+        </div>
+    </div>
+</div>
+
+<form action="/home/resultpart5?lessionId=@lesson.Id" method="post">
+    <div class="row" style="margin-bottom:200px">
+        <div class="col-md-12">
+            <div>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <div class="card card-table">
+                        <input type="hidden" name="questions[@i].Id" value="@Model[i].Id" />
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="box-audio">
+                                        <span>Câu @(i+1)</span>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <div style="margin-bottom: 15px;">
+                                        @Model[i].Content
+                                    </div>
+                                    @foreach (var answer in Model[i].Answers)
+                                    {
+                                        <div style="margin-bottom: 10px; margin-left: 15px;">
+                                            <label>
+                                                <input type="radio" name="questions[@i].UserAnswer" value="@answer.Id" />
+                                                @answer.Content
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary">Nộp bài thi</button>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    $("form").submit(function (event) {
+        if (confirm("Xác nhận nộp bài thi")) {
+            return;
+        }
+        else
+            event.preventDefault();
+    });
+</script>

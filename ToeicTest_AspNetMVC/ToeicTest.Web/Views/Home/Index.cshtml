@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Tổng quan";
+}
+
+<script>
+    $("#menu_home").addClass("active");
+</script>
+ 
+<div class="row">
+    <div class="col-xl-3">
+        <div class="card bg-one">
+            <div class="card-body">
+                <div class="db-widgets d-flex align-items-center">
+                    <div class="db-icon">
+                        <i class="fas fa-photo-video"></i>
+                    </div>
+                    <div class="db-info">
+                        <h4>@ViewBag.totalLessionOfPart1</h4>
+                        <h6>Listening</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <div class="card bg-four">
+            <div class="card-body">
+                <div class="db-widgets d-flex align-items-center">
+                    <div class="db-icon">
+                        <i class="fas fa-pen-alt"></i>
+                    </div>
+                    <div class="db-info">
+                        <h4>@ViewBag.totalLessionOfPart5</h4>
+                        <h6>Writing</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

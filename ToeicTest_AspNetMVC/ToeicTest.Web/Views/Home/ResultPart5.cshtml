@@ -1,0 +1,83 @@
+﻿@using ToeicTest.Core.Dto
+@model List<QuestionDto>
+@{
+    ViewBag.Title = "Part 5: Incomplete Sentence";
+
+    LessonDto lesson = (LessonDto)ViewData["lesson"];
+    if (lesson == null)
+    {
+        lesson = new LessonDto();
+    }
+}
+
+<script>
+    $("#menu_part5").addClass("active");
+</script>
+
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <h5 class="page-title">
+                Bộ câu hỏi: <b>@lesson.Name</b>
+                <span class="point-exam">
+                    Kết quả: <b><span style="color: orange">@(Model.Count(x=>!string.IsNullOrEmpty(x.UserAnswer) && x.UserAnswer == x.CorrectAnswerId))</span></b>/@Model.Count câu hỏi
+                </span>
+            </h5>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom:200px">
+    <div class="col-md-12">
+        <div>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="card card-table">
+                    <input type="hidden" name="questions[@i].Id" value="@Model[i].Id" />
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box-audio">
+                                    <span>Câu @(i+1)</span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div style="margin-bottom: 15px;">
+                                    @Model[i].Content
+                                </div>
+                                @foreach (var answer in Model[i].Answers)
+                                {
+                                    <div style="margin-bottom:10px">
+                                        <label>
+                                            <input type="radio" name="questions[@i].UserAnswer" value="@answer.Id" @(Model[i].UserAnswer == answer.Id ? "checked" : "") />
+                                            @{
+                                                string classColor = "";
+
+                                                if (Model[i].CorrectAnswerId == answer.Id)
+                                                {
+                                                    classColor = "correct-answer";
+                                                }
+
+                                                if (Model[i].UserAnswer == answer.Id && Model[i].CorrectAnswerId != answer.Id)
+                                                {
+                                                    classColor = "wrong-answer";
+                                                }
+                                            }
+                                            <span class="@classColor">
+                                                @answer.Content
+                                            </span>
+                                        </label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-12 text-center">
+        <a href="/home/part5" class="btn btn-primary">Thoát</a>
+    </div>
+</div> 
